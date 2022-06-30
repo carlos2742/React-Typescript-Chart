@@ -24,8 +24,9 @@ export const Main = () => {
       },
     ] = data;
 
-    const tvlSrc: ISource = generateDataSource(tvlStakedHistory);
-    const aprSrc: ISource = generateDataSourceFakeValues(aprDaily, tokenAPriceHistory);
+    // Use reverse to sort dates asc
+    const tvlSrc: ISource = generateDataSource([...tvlStakedHistory].reverse());
+    const aprSrc: ISource = generateDataSourceFakeValues(aprDaily, [...tokenAPriceHistory].reverse());
 
     setTvl(tvlSrc);
     setApr(aprSrc);
